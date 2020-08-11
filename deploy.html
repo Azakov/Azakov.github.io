@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let interval = null;
+    function changeColor() {
+        interval = setInterval(() => {        
+        const newColor = `rgb(${getRandomNumber(255)}, ${getRandomNumber(255)}, ${getRandomNumber(255)})`
+        document.getElementsByClassName('color')[0].setAttribute("style", `background-color: ${newColor}`)
+        }, 300)
+    }
+
+    function stopChangeColor() {
+        clearInterval(interval);
+    }
+
+    function getRandomNumber(x) {
+        return Math.floor(Math.random() * Math.floor(x));
+    }
+</script>
+<style>
+    section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .color{
+        border: 1px solid;
+        width: 1000px;
+        height: 1000px;
+    }
+</style>
+<body>
+    <section>
+        <div class="color"></div>
+    </section>
+    <button onclick="changeColor()">Change color</button>
+    <button onclick="stopChangeColor()">stop madness</button>
+</body>
+</html>
